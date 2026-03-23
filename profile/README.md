@@ -23,7 +23,7 @@ Pull requests are currently disabled. The increased emphasis on AI coding agents
 
 ## Agent-driven development
 
-This project is an experiment in pushing the limits of AI coding agents. The initial porting of each library and the ongoing maintenance of the forks are performed primarily by coding agents. Human review focuses on correctness and design decisions; the mechanical work of adapting upstream changes is delegated to agents.
+This project is an experiment in pushing the limits of AI coding agents. The initial porting of each library and the ongoing maintenance of the forks are performed primarily by coding agents.
 
 ---
 
