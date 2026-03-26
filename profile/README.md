@@ -8,7 +8,7 @@ The name "atom-planet-embrace" has no deeper meaning — it was three random wor
 
 The goal of each port is simple: **the `default` feature of the crate should not require `std`**. Consumers should be able to add a dependency without `default-features = false` and have it work in a `no_std` context out of the box.
 
-When upstream functionality inherently requires the standard library — typically because it makes a syscall (e.g. getting the current time, reading from the filesystem, or resolving network addresses) — we do not simply gate that functionality behind a `std` feature flag. Instead, we encapsulate it behind a **compile-time generic trait**. This lets callers on bare-metal or other constrained targets supply their own implementation of that behavior, rather than being forced to either pull in `std` or lose the functionality entirely.
+When upstream functionality inherently requires the standard library — typically because it makes a syscall (e.g. getting the current time, reading from the filesystem, or resolving network addresses) — we try not to gate that functionality behind a `std` feature flag. Instead, we encapsulate it behind a **compile-time generic trait**. This lets callers on bare-metal or other constrained targets supply their own implementation of that behavior, rather than being forced to either pull in `std` or lose the functionality entirely.
 
 ## Approach to porting
 
