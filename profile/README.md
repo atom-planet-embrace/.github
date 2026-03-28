@@ -10,6 +10,26 @@ The goal of each port is simple: **the `default` feature of the crate should not
 
 When upstream functionality inherently requires the standard library — typically because it makes a syscall (e.g. getting the current time, reading from the filesystem, or resolving network addresses) — we try not to gate that functionality behind a `std` feature flag. Instead, we encapsulate it behind a **compile-time generic trait**. This lets callers on bare-metal or other constrained targets supply their own implementation of that behavior, rather than being forced to either pull in `std` or lose the functionality entirely.
 
+## Crates
+
+| Name | Version | Status | Description |
+|------|---------|--------|-------------|
+| [`ai-chrono`](https://github.com/atom-planet-embrace/ai-chrono) | 0.4.44 | [![Build Status](https://github.com/atom-planet-embrace/ai-chrono/actions/workflows/codecov.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-chrono/actions) | Date and time library for Rust |
+| [`ai_color_quant`](https://github.com/atom-planet-embrace/ai_color_quant) | 1.1.0 | [![Build Status](https://github.com/atom-planet-embrace/ai_color_quant/actions/workflows/rust.yml/badge.svg)](https://github.com/atom-planet-embrace/ai_color_quant/actions) | Color quantization library to reduce n colors to 256 colors. |
+| [`ai-exr`](https://github.com/atom-planet-embrace/ai-exrs) | 1.74.0 | [![Build Status](https://github.com/atom-planet-embrace/ai-exrs/actions/workflows/rust.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-exrs/actions) | Read and write OpenEXR files without any unsafe code |
+| [`ai-fdeflate`](https://github.com/atom-planet-embrace/ai-fdeflate) | 0.3.8 | [![Build Status](https://github.com/atom-planet-embrace/ai-fdeflate/actions/workflows/rust.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-fdeflate/actions) | Fast specialized deflate implementation |
+| [`ai-flate2`](https://github.com/atom-planet-embrace/ai-flate2) | 1.1.9 | [![Build Status](https://github.com/atom-planet-embrace/ai-flate2/actions/workflows/cifuzz.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-flate2/actions) | DEFLATE compression and decompression exposed as Read/BufRead/Write streams. Supports miniz_oxide and multiple zlib implementations. Supports zlib, gzip, and raw deflate streams. |
+| [`ai-gif`](https://github.com/atom-planet-embrace/ai-gif) | 0.14.1 | [![Build Status](https://github.com/atom-planet-embrace/ai-gif/actions/workflows/rust.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-gif/actions) | GIF de- and encoder |
+| [`ai-imagesize`](https://github.com/atom-planet-embrace/ai-imagesize) | 0.14.0 | [![Build Status](https://github.com/atom-planet-embrace/ai-imagesize/actions/workflows/ci.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-imagesize/actions) | Quick probing of image dimensions without loading the entire file. |
+| [`ai-lebe`](https://github.com/atom-planet-embrace/ai-lebe) | 0.5.3 | [![Build Status](https://github.com/atom-planet-embrace/ai-lebe/actions/workflows/rust.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-lebe/actions) | Tiny, dead simple, high performance endianness conversions with a generic API |
+| [`ai-png`](https://github.com/atom-planet-embrace/ai-png) | 0.18.1 | [![Build Status](https://github.com/atom-planet-embrace/ai-png/actions/workflows/cifuzz.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-png/actions) | PNG decoding and encoding library in pure Rust |
+| [`ai-resvg`](https://github.com/atom-planet-embrace/ai-resvg) | | [![Build Status](https://github.com/atom-planet-embrace/ai-resvg/actions/workflows/main.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-resvg/actions) | An SVG rendering library. |
+| [`ai-resvg-capi`](https://github.com/atom-planet-embrace/ai-resvg) | | [![Build Status](https://github.com/atom-planet-embrace/ai-resvg/actions/workflows/main.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-resvg/actions) | A no_std fork of resvg-capi |
+| [`ai-strict-num`](https://github.com/atom-planet-embrace/ai-strict-num) | 0.2.0 | [![Build Status](https://github.com/atom-planet-embrace/ai-strict-num/actions/workflows/main.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-strict-num/actions) | A collection of bounded numeric types |
+| [`ai-usvg`](https://github.com/atom-planet-embrace/ai-resvg) | | [![Build Status](https://github.com/atom-planet-embrace/ai-resvg/actions/workflows/main.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-resvg/actions) | An SVG simplification library. |
+| [`ai-xmlwriter`](https://github.com/atom-planet-embrace/ai-xmlwriter) | | [![Build Status](https://github.com/atom-planet-embrace/ai-xmlwriter/actions/workflows/ci.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-xmlwriter/actions) | A simple, streaming XML writer. |
+| [`ai-zune-inflate`](https://github.com/atom-planet-embrace/ai-zune-inflate) | 0.2.54 | [![Build Status](https://github.com/atom-planet-embrace/ai-zune-inflate/actions/workflows/ci.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-zune-inflate/actions) | A heavily optimized deflate decompressor in Pure Rust |
+
 ## Approach to porting
 
 - The upstream crate's `no_std`-compatible core is preserved as-is where possible.
