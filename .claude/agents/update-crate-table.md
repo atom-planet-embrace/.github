@@ -56,11 +56,11 @@ curl -s "https://crates.io/api/v1/crates/{crate_name}" | python3 -c "import sys,
 If the crate is not found on crates.io, leave the version cell empty.
 
 #### Status
-Use a GitHub Actions badge image that dynamically reflects the current build status. For each repository, discover the first workflow file:
+Use a GitHub Actions badge image that dynamically reflects the current build status. For each repository, discover the most recently run workflow file:
 ```
-gh api repos/atom-planet-embrace/{repo}/actions/workflows --jq '.workflows[0].path'
+gh api repos/atom-planet-embrace/{repo}/actions/runs?per_page=1 --jq '.workflow_runs[0].path'
 ```
-This returns a path like `.github/workflows/rust.yml`. Extract just the filename (e.g. `rust.yml`).
+This returns the workflow file path from the most recent run (e.g. `.github/workflows/rust.yml`). Extract just the filename (e.g. `rust.yml`). Using the most recent run ensures that repos with multiple workflows show the most relevant badge.
 
 Then construct a badge image linked to the Actions page:
 ```
