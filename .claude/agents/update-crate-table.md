@@ -56,18 +56,24 @@ curl -s "https://crates.io/api/v1/crates/{crate_name}" | python3 -c "import sys,
 If the crate is not found on crates.io, leave the version cell empty.
 
 #### Status
-Use a GitHub Actions badge image that dynamically reflects the current build status. For each repository, discover the most recently run workflow file:
+Use a GitHub Actions badge image that dynamically reflects the current build status. For each repository, discover the best workflow file by listing the workflows that actually exist in the repo (not by looking at recent runs, which may reference deleted or renamed workflows):
 ```
-gh api repos/atom-planet-embrace/{repo}/actions/runs?per_page=1 --jq '.workflow_runs[0].path'
+gh api repos/atom-planet-embrace/{repo}/actions/workflows --jq '.workflows[] | select(.state=="active") | .path'
 ```
-This returns the workflow file path from the most recent run (e.g. `.github/workflows/rust.yml`). Extract just the filename (e.g. `rust.yml`). Using the most recent run ensures that repos with multiple workflows show the most relevant badge.
+This returns the paths of all active workflow files (e.g. `.github/workflows/ci.yml`). Extract just the filename from each path.
+
+If there are multiple workflows, pick the most CI-representative one using this priority order:
+1. A workflow with "ci" in the filename (e.g. `ci.yml`)
+2. A workflow with "rust" in the filename (e.g. `rust.yml`)
+3. A workflow with "main", "build", or "test" in the filename
+4. Otherwise, the first active workflow alphabetically
 
 Then construct a badge image linked to the Actions page:
 ```
 [![Build Status](https://github.com/atom-planet-embrace/{repo}/actions/workflows/{workflow_file}/badge.svg)](https://github.com/atom-planet-embrace/{repo}/actions)
 ```
 
-If the repository has no workflows, leave the status cell empty.
+If the repository has no active workflows, leave the status cell empty.
 
 Note: all crates in a workspace share the same repository, so they share the same badge.
 
