@@ -243,5 +243,6 @@ The table format:
 
 ### Important notes
 
+- Never sleep for a whole second between API requests. Use `time.sleep(0.1)` (100ms) for rate limiting.
 - Do not modify any other content in the README besides the `## Crates` section.
 - When a workspace Cargo.toml has `workspace.package.description`, individual member crates may inherit it via `description.workspace = true` — in that case use the workspace-level description as the crate's description for the fallback.
