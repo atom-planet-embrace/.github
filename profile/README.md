@@ -6,9 +6,9 @@ The name "atom-planet-embrace" has no deeper meaning — it was three random wor
 
 ## Philosophy
 
-The goal of each port is simple: **the `default` feature of the crate should not require `std`**. Consumers should be able to add a dependency without `default-features = false` and have it work in a `no_std` context out of the box.
+We start with a crate that either lacks `no_std` support entirely, or has `no_std` support but implements it by feature-gating the `std` features. In our port, we remove `std` from the crate's default features while keeping any other default feature that does not rely on `std`.
 
-When upstream functionality inherently requires the standard library — typically because it makes a syscall (e.g. getting the current time, reading from the filesystem, or resolving network addresses) — we try not to gate that functionality behind a `std` feature flag. Instead, we encapsulate it behind a **compile-time generic trait**. This lets callers on bare-metal or other constrained targets supply their own implementation of that behavior, rather than being forced to either pull in `std` or lose the functionality entirely.
+We try to limit feature gating to only when it is strictly necessary. When possible, we use a **shim** that falls back to the `std` crate when the `std` feature is enabled and otherwise provides a generic implementation in a `no_std` environment (the [`no_std_io`](https://crates.io/crates/no_std_io) crate is an example of such a shim). Another strategy is a **compile-time generic trait**. This lets callers on bare-metal or other constrained targets supply their own implementation of that behavior, rather than being forced to either pull in `std` or lose the functionality entirely.
 
 ## Crates
 
