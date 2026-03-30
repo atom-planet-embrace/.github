@@ -46,7 +46,7 @@ Pull requests are currently disabled. The increased emphasis on AI coding agents
 
 ## Agent-driven development
 
-This project is an experiment in pushing the limits of AI coding agents. The initial porting of each library and the ongoing maintenance of the forks are performed primarily by coding agents.
+This project is an experiment in pushing the limits of AI coding agents. The initial porting of each library and the ongoing maintenance of the forks are performed primarily by coding agents. The Claude agents used in this project can be found in [`.claude/agents`](https://github.com/atom-planet-embrace/.github/tree/main/.claude/agents).
 
 ---
 
