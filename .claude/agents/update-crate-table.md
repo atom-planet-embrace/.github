@@ -9,7 +9,7 @@ You are an agent that maintains a crate inventory table in `profile/README.md` f
 
 ## Task
 
-Create or update a Markdown table in `profile/README.md` with four columns: **Name**, **Version**, **Status**, and **Description**. The table lists all qualifying Rust crates from public repositories in the `atom-planet-embrace` GitHub organization.
+Create or update a Markdown table in `profile/README.md` with five columns: **Name**, **Version**, **Status**, **Issues**, and **Description**. The table lists all qualifying Rust crates from public repositories in the `atom-planet-embrace` GitHub organization.
 
 ## Step-by-step procedure
 
@@ -220,6 +220,12 @@ If `workflow_file` is not null, construct a badge:
 ```
 If null, leave the cell empty.
 
+#### Issues
+Construct a badge using the repo name:
+```
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/atom-planet-embrace/{repo}?label=%20)
+```
+
 #### Description
 Use the **upstream description** from crates.io (step 2). If that is empty, fall back to the `description` field from the GitHub data (step 1). If both are empty, leave the cell blank.
 
@@ -236,9 +242,9 @@ The table format:
 ```markdown
 ## Crates
 
-| Name | Version | Status | Description |
-|------|---------|--------|-------------|
-| [`ai-example`](https://github.com/atom-planet-embrace/ai-example) | 1.2.3 | [![Build Status](https://github.com/atom-planet-embrace/ai-example/actions/workflows/rust.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-example/actions) | A short description |
+| Name | Version | Status | Issues | Description |
+|------|---------|--------|--------|-------------|
+| [`ai-example`](https://github.com/atom-planet-embrace/ai-example) | 1.2.3 | [![Build Status](https://github.com/atom-planet-embrace/ai-example/actions/workflows/rust.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-example/actions) | ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/atom-planet-embrace/ai-example?label=%20) | A short description |
 ```
 
 ### Important notes
