@@ -2,7 +2,7 @@
 
 This organization maintains forks of common Rust crates that have been modified to work in `no_std` and other unusual environments.
 
-The name "atom-planet-embrace" has no deeper meaning — it was three random words that sounded interesting.
+The name "atom-planet-embrace" has no deeper meaning — it was three random words that sounded interesting. Crate names are prefixed with `ai-` for the same reason that "dynamic programming" is named: it's a catchy buzzword that is tangentially related to the project.
 
 ## Philosophy
 
@@ -39,13 +39,6 @@ We try to limit feature gating to only when it is strictly necessary. When possi
 | [`ai-weezl`](https://github.com/atom-planet-embrace/ai-weezl) | 0.1.12 | [![Build Status](https://github.com/atom-planet-embrace/ai-weezl/actions/workflows/rust.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-weezl/actions) | ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/atom-planet-embrace/ai-weezl?label=%20) | Fast LZW compression and decompression. |
 | [`ai-xmlwriter`](https://github.com/atom-planet-embrace/ai-xmlwriter) | 0.1.0 | [![Build Status](https://github.com/atom-planet-embrace/ai-xmlwriter/actions/workflows/ci.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-xmlwriter/actions) | ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/atom-planet-embrace/ai-xmlwriter?label=%20) | A simple, streaming XML writer. |
 | [`ai-zune-inflate`](https://github.com/atom-planet-embrace/ai-zune-inflate) | 0.2.54 | [![Build Status](https://github.com/atom-planet-embrace/ai-zune-inflate/actions/workflows/ci.yml/badge.svg)](https://github.com/atom-planet-embrace/ai-zune-inflate/actions) | ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/atom-planet-embrace/ai-zune-inflate?label=%20) | A heavily optimized deflate decompressor in Pure Rust |
-
-## Approach to porting
-
-- The upstream crate's `no_std`-compatible core is preserved as-is where possible.
-- `std`-dependent behavior is identified and abstracted behind a trait boundary.
-- The `std` feature re-enables the default upstream behavior by providing a blanket impl of that trait backed by the standard library.
-- Crate names are prefixed with `ai-` for the same reason that "dynamic programming" is named: it's a catchy buzzword that is tangentially related to the project.
 
 ## Contributing
 
